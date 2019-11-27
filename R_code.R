@@ -83,3 +83,4 @@ like2 <- trimws(unlist(lapply(like2, function(x) {x$getElementText()})))
 result = data.frame("최근순"=c(numb1,numb2),"타이틀"=c(title1,title2), "아티스트"=c(artist1,artist2),"엘범"=c(album1,album2),"좋아요"=c(like1,like2))
 result #1페이지,2페이지 데이터 결합해 데이터프레임자료로 변환
 
+remDr$close()
