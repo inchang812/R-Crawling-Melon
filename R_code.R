@@ -7,55 +7,55 @@ remDr <- remoteDriver(
 )
 
 remDr$open()
-remDr$navigate("https://melon.com")#¸á·Ð È¨ÆäÀÌÁö Á¢¼Ó
+remDr$navigate("https://melon.com")#ë©œë¡  í™ˆíŽ˜ì´ì§€ ì ‘ì†
 Sys.sleep(2)
 loginbtn <- remDr$findElement(using="css", value='.btn_login')
-loginbtn$clickElement() #¸ÞÀÎÈ¨ ·Î±×ÀÎ ¹öÆ° ´©¸£±â
+loginbtn$clickElement() #ë©”ì¸í™ˆ ë¡œê·¸ì¸ ë²„íŠ¼ ëˆ„ë¥´ê¸°
 Sys.sleep(2)
 mloginbtn <- remDr$findElement(using="css", value='.btn_gate.melon')
-mloginbtn$clickElement() #melonÀ¸·Î ·Î±×ÀÎ ¹öÆ° ´©¸£±â
+mloginbtn$clickElement() #melonìœ¼ë¡œ ë¡œê·¸ì¸ ë²„íŠ¼ ëˆ„ë¥´ê¸°
 Sys.sleep(2)
 txt_id<-remDr$findElement(using="id",value="id") 
 txt_pw<-remDr$findElement(using="id",value="pwd")
-txt_id$setElementAttribute("value","hhhimbin") 
+txt_id$setElementAttribute("value","####") 
 Sys.sleep(2)
-txt_pw$setElementAttribute("value","park0816!") #¾ÆÀÌµð ºñ¹Ð¹øÈ£ ÀÔ·Â
+txt_pw$setElementAttribute("value","####") #ì•„ì´ë”” ë¹„ë°€ë²ˆí˜¸ ìž…ë ¥
 Sys.sleep(2)
 floginbtn <- remDr$findElement(using="css", value='.btn_login03')
-floginbtn$clickElement() #¸¶Áö¸· ·Î±×ÀÎ ¹öÆ° ´©¸£±â
+floginbtn$clickElement() #ë§ˆì§€ë§‰ ë¡œê·¸ì¸ ë²„íŠ¼ ëˆ„ë¥´ê¸°
 Sys.sleep(2)
 mybtn <- remDr$findElement(using="css", value='.menu_bg.menu10') 
-mybtn$clickElement() #¸¶ÀÌ¹ÂÁ÷¸Å´º·ÎÀÌµ¿
+mybtn$clickElement() #ë§ˆì´ë®¤ì§ë§¤ë‰´ë¡œì´ë™
 Sys.sleep(2)
 aviewbtn <- remDr$findElement(using="xpath", value='//*[@id="viewMore"]/span[1]')
-aviewbtn$clickElement() #ÀüÃ¼º¸±â¹öÆ°
+aviewbtn$clickElement() #ì „ì²´ë³´ê¸°ë²„íŠ¼
 Sys.sleep(2)
 
 numb1 <- remDr$findElements(using = "css", '.no') 
 numb1 <- unlist(lapply(numb1, function(x) {x$getElementText()}))
-numb1 <- trimws(numb1[2:51]) #Ã¹¹øÂ° ¾²·¹±â°ªÀ» Á¦¿ÜÇÑ ¼øÀ§µ¥ÀÌÅÍ ÀúÀå
+numb1 <- trimws(numb1[2:51]) #ì²«ë²ˆì§¸ ì“°ë ˆê¸°ê°’ì„ ì œì™¸í•œ ìˆœìœ„ë°ì´í„° ì €ìž¥
 
 title1 = c()
 for (i in 1:50){
   temp <- remDr$findElements(using = "xpath", sprintf('//*[@id="frm"]/div/table/tbody/tr[%d]/td[3]/div/div/a[2]',i))
-  title1[i] <- trimws(unlist(lapply(temp, function(x) {x$getElementText()}))) #°î Å¸ÀÌÆ² ÀúÀå
+  title1[i] <- trimws(unlist(lapply(temp, function(x) {x$getElementText()}))) #ê³¡ íƒ€ì´í‹€ ì €ìž¥
 }
 
 artist1 <- remDr$findElements(using = "id", 'artistName')
-artist1 <- trimws(unlist(lapply(artist1, function(x) {x$getElementText()}))) #°¡¼ö¸í ÀúÀå
+artist1 <- trimws(unlist(lapply(artist1, function(x) {x$getElementText()}))) #ê°€ìˆ˜ëª… ì €ìž¥
 
 album1 = c()
 for (i in 1:50){
   temp <- remDr$findElements(using = "xpath", sprintf('//*[@id="frm"]/div/table/tbody/tr[%d]/td[5]/div/div/a',i))
-  album1[i] <- trimws(unlist(lapply(temp, function(x) {x$getElementText()}))) #¿¤¹ü¸í ÀúÀå
+  album1[i] <- trimws(unlist(lapply(temp, function(x) {x$getElementText()}))) #ì—˜ë²”ëª… ì €ìž¥
 }
 
 like1 <- remDr$findElements(using = "css", '.cnt')
-like1 <- trimws(unlist(lapply(like1, function(x) {x$getElementText()}))) #°î¿¡ ´Þ¸° ÁÁ¾Æ¿ä ¼ö ÀúÀå
+like1 <- trimws(unlist(lapply(like1, function(x) {x$getElementText()}))) #ê³¡ì— ë‹¬ë¦° ì¢‹ì•„ìš” ìˆ˜ ì €ìž¥
 
 Sys.sleep(2)
 Npage <- remDr$findElement(using="xpath", value='//*[@id="pageNavDetail"]/div/span/a')
-Npage$clickElement() #´ÙÀ½ÆäÀÌÁö¹öÆ° ´©¸£±â
+Npage$clickElement() #ë‹¤ìŒíŽ˜ì´ì§€ë²„íŠ¼ ëˆ„ë¥´ê¸°
 Sys.sleep(2)
 
 numb2 <- remDr$findElements(using = "css", '.no')
@@ -80,6 +80,6 @@ for (i in 1:50){
 like2 <- remDr$findElements(using = "css", '.cnt')
 like2 <- trimws(unlist(lapply(like2, function(x) {x$getElementText()})))
 
-result = data.frame("ÃÖ±Ù¼ø"=c(numb1,numb2),"Å¸ÀÌÆ²"=c(title1,title2), "¾ÆÆ¼½ºÆ®"=c(artist1,artist2),"¿¤¹ü"=c(album1,album2),"ÁÁ¾Æ¿ä"=c(like1,like2))
-result #1ÆäÀÌÁö,2ÆäÀÌÁö µ¥ÀÌÅÍ °áÇÕÇØ µ¥ÀÌÅÍÇÁ·¹ÀÓÀÚ·á·Î º¯È¯
+result = data.frame("ìµœê·¼ìˆœ"=c(numb1,numb2),"íƒ€ì´í‹€"=c(title1,title2), "ì•„í‹°ìŠ¤íŠ¸"=c(artist1,artist2),"ì—˜ë²”"=c(album1,album2),"ì¢‹ì•„ìš”"=c(like1,like2))
+result #1íŽ˜ì´ì§€,2íŽ˜ì´ì§€ ë°ì´í„° ê²°í•©í•´ ë°ì´í„°í”„ë ˆìž„ìžë£Œë¡œ ë³€í™˜
 
